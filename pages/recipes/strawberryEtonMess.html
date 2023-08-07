@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Chip Zucchini Bread</title>
+    <link rel="stylesheet" href="../../styles/general.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="recipes.css">
+    <link rel="stylesheet" href="individualRecipes.css">
+    <script src="../../script.js"></script>
+    <script src="../../data/data.js"></script>
+    <script>
+      const thisRecipe = getRecipeDetails("strawberryEtonMess.html");
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log(thisRecipe);
+        document.getElementById("recipe-name").innerHTML = thisRecipe["name"];
+        document.getElementById("recipe-description").innerHTML = thisRecipe["description"];
+        document.getElementById("recipe-img").src = "../../" + thisRecipe["picUrl"];
+        const thisRecipeContent = document.getElementById("page-content");
+        const keysIngredients = Object.keys(thisRecipe["ingredients"]);
+        for (let i = 0; i < keysIngredients.length; i++) {
+          console.log(thisRecipe["ingredients"][keysIngredients[i]]);
+          const ingredientTitle = document.createElement("h3");
+          ingredientTitle.innerHTML = keysIngredients[i];
+          thisRecipeContent.appendChild(ingredientTitle);
+          const ingredientsList = document.createElement("ul");
+          const ingredientsContent = thisRecipe["ingredients"][keysIngredients[i]];
+          for (let j = 0; j < ingredientsContent.length; j++) {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = ingredientsContent[j];
+            ingredientsList.appendChild(listItem);
+          }
+          thisRecipeContent.appendChild(ingredientsList);
+        }
+        const howToMake = document.createElement("h1");
+        howToMake.innerHTML = "How To Cook";
+        thisRecipeContent.appendChild(howToMake);
+        const keysHowToMake = Object.keys(thisRecipe["howToMake"]);
+        for (let i = 0; i < keysHowToMake.length; i++) {
+          const textTitle = document.createElement("h4");
+          textTitle.innerHTML = keysHowToMake[i];
+          thisRecipeContent.appendChild(textTitle);
+          const textContent = document.createElement("p");
+          textContent.innerHTML = "&emsp;&emsp;" + thisRecipe["howToMake"][keysHowToMake[i]];
+          thisRecipeContent.appendChild(textContent);
+          
+        }
+        const bonApetit = document.createElement("h2");
+        bonApetit.innerHTML = "Bon Apetit &#128522;"
+        thisRecipeContent.appendChild(bonApetit);
+      });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-left-side">
+          <button onclick="alert('Not enough time to implement this :(')" class="burger-menu-button">
+            <img class="burger-menu-svg" src="../../icons/burger-menu.svg" alt="burger-menu">
+          </button>
+          <a href="../../index.html">
+            <img class="header-logo" src="../../img/logos/anthracite-bgremoved.png" alt="logo">
+
+          </a>
+        </div>
+        <div class="header-middle">
+          <input placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
+          <button onclick="alert('Not enough time to implement this :(')" class="search-icon-button">
+            <img class="magnifying-glass-icon" src="../../icons/magnifying-glass.svg" alt="magnifying glass">
+          </button>
+        </div>
+        <div class="header-right-side">
+          <a href="../../index.html" class="nav-button">Homepage</a>
+          <a href="recipes.html" class="nav-button">Recipes</a>
+          <a href="../about/about.html" class="nav-button">About Us</a>
+          <a onclick="alert('Not enough time to implement this :(')" class="nav-button">Login</a>
+        </div>
+      </header>
+      <div id=page-content>
+        <h1 id="recipe-name"></h1>
+        <p id="recipe-description"></p>
+        <img src="" id="recipe-img">
+        <h1>Ingredients</h1>
+      </div>
+      <footer>
+
+      </footer>
+</body>
+</html>

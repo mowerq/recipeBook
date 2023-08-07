@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <script src="script.js"></script>
+  <script src="data/data.js"></script>
+  <title>MG Recipe Book</title>
+  <script>
+    const randomSuggestion = showRandomRecipe();
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("suggestion-name").innerHTML = randomSuggestion["name"];
+      document.getElementById("suggestion-description").innerHTML = randomSuggestion["description"];
+      document.getElementById("homepage-suggestion-img").src = randomSuggestion["picUrl"];
+      const homepageSuggestion = document.getElementById("homepage-suggestion");
+      const keysIngredients = Object.keys(randomSuggestion["ingredients"]);
+      for (let i = 0; i < keysIngredients.length; i++) {
+        console.log(randomSuggestion["ingredients"][keysIngredients[i]]);
+        const ingredientTitle = document.createElement("h3");
+        ingredientTitle.innerHTML = keysIngredients[i];
+        homepageSuggestion.appendChild(ingredientTitle);
+        const ingredientsList = document.createElement("ul");
+        const ingredientsContent = randomSuggestion["ingredients"][keysIngredients[i]];
+        for (let j = 0; j < ingredientsContent.length; j++) {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = ingredientsContent[j];
+          ingredientsList.appendChild(listItem);
+        }
+        homepageSuggestion.appendChild(ingredientsList);
+      }
+      const howToMake = document.createElement("h1");
+      howToMake.innerHTML = "How To Cook";
+      homepageSuggestion.appendChild(howToMake);
+      const keysHowToMake = Object.keys(randomSuggestion["howToMake"]);
+      for (let i = 0; i < keysHowToMake.length; i++) {
+        const textTitle = document.createElement("h4");
+        textTitle.innerHTML = keysHowToMake[i];
+        homepageSuggestion.appendChild(textTitle);
+        const textContent = document.createElement("p");
+        textContent.innerHTML = "&emsp;&emsp;" + randomSuggestion["howToMake"][keysHowToMake[i]];
+        homepageSuggestion.appendChild(textContent);
+        
+      }
+
+    
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-left-side">
+      <button onclick="alert('Not enough time to implement this :(')" class="burger-menu-button">
+        <img class="burger-menu-svg" src="icons/burger-menu.svg" alt="burger-menu">
+      </button>
+      <a href="">
+        <img class="header-logo" src="img/logos/anthracite-bgremoved.png" alt="logo">
+      </a>
+    </div>
+    <div class="header-middle">
+      <input placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
+      <button onclick="alert('Not enough time to implement this :(')" class="search-icon-button">
+        <img class="magnifying-glass-icon" src="icons/magnifying-glass.svg" alt="magnifying glass">
+      </button>
+    </div>
+    <div class="header-right-side">
+      <a href="" class="nav-button">Homepage</a>
+      <a href="pages/recipes/recipes.html" class="nav-button">Recipes</a>
+      <a href="pages/about/about.html" class="nav-button">About Us</a>
+      <a onclick="alert('Not enough time to implement this :(')" class="nav-button">Login</a>
+    </div>
+  </header>
+  <side-bar>
+
+  </side-bar>
+  <page-content>
+    <h1>Welcome to MG Recipes</h1>
+    <h2>You can find the world's best recipes in this website. Start discovering now!</h2>  
+    <hr>
+    <div id="homepage-suggestion">
+      <h3>Here is a suggestion for you: <span id="suggestion-name"></span></h3>
+      <p id="suggestion-description"></p>
+      <img src="" id="homepage-suggestion-img">
+      <h1>Ingredients</h1>
+    </div>
+    <h2>Bon Apetit &#128522;</h2>
+  </page-content>
+  <footer>
+    <p>All rights reserved. 07.08.2023</p>
+  </footer>
+</body>
+</html>

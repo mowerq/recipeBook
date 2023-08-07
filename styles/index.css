@@ -1,0 +1,63 @@
+page-content {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-color: white;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+page-content h1{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+    padding: 0 50px;
+}
+
+page-content h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 100px;
+    padding: 0 50px;
+
+}
+
+
+#homepage-suggestion{
+    width: 100%;
+    border-radius: 2px;
+}
+
+#homepage-suggestion h3{
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#homepage-suggestion-img {
+    width: 100%;
+}
+
+#suggestion-description {
+    margin: 20px 50px;
+    font-size: 18px;
+}
+
+#homepage-suggestion li{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#homepage-suggestion h4 {
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 24px;
+}
+
+#homepage-suggestion p {
+    margin-left: 50px;
+    margin-right: 50px;
+}

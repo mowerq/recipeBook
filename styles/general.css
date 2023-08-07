@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'generalFont';
+    src: url('../fonts/Comfortaa-VariableFont_wght.ttf') format('truetype');
+  }
+
+
+* {
+    font-family: "generalFont", sans-serif;
+}
+
+body, html {
+    margin: 0;
+    background-image: linear-gradient(rgba(255,255,255,.94), rgba(255,255,255,.94)), url('../img/bg.avif');
+}
+
+body {
+    position: relative;
+    padding: 100px 60px 40px 60px;
+    height: calc(100% - 140px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #383e42;
+    cursor: pointer;
+}

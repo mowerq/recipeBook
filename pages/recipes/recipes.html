@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/general.css">
+    <link rel="stylesheet" href="../../styles/header.css">
+    <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="recipes.css">
+    <script src="../../script.js"></script>
+    <script src="../../data/data.js"></script>
+    <title>Recipes</title>
+    <script>
+      const allRecipes = readRecipes();
+      document.addEventListener('DOMContentLoaded', function() {
+        const pageContent = document.getElementById("page-content");
+        for (let i = 0; i < allRecipes.length; i++) {
+          const recipeCard = document.createElement("div");
+          recipeCard.className = "recipe-card";
+          const bgImage = document.createElement("img");
+          bgImage.src = "../../" + allRecipes[i]["picUrl"];
+          bgImage.className = "card-bg";
+          const navigatorBgImage = document.createElement("a");
+          navigatorBgImage.appendChild(bgImage);
+          navigatorBgImage.href = allRecipes[i]["htmlUrl"];
+          recipeCard.appendChild(navigatorBgImage);
+          const recipeName = document.createElement("p");
+          recipeName.innerHTML = allRecipes[i]["name"];
+          recipeName.className = "recipe-name";
+          recipeCard.appendChild(recipeName);
+          const recipeDescription = document.createElement("p");
+          recipeDescription.innerHTML = allRecipes[i]["description"];
+          recipeDescription.className = "recipe-description";
+          recipeCard.appendChild(recipeDescription);
+
+          pageContent.appendChild(recipeCard);
+        }
+      });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-left-side">
+          <button onclick="alert('Not enough time to implement this :(')" class="burger-menu-button">
+            <img class="burger-menu-svg" src="../../icons/burger-menu.svg" alt="burger-menu">
+          </button>
+          <img class="header-logo" src="../../img/logos/anthracite-bgremoved.png" alt="logo">
+        </div>
+        <div class="header-middle">
+          <input placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
+          <button onclick="alert('Not enough time to implement this :(')" class="search-icon-button">
+            <img class="magnifying-glass-icon" src="../../icons/magnifying-glass.svg" alt="magnifying glass">
+          </button>
+        </div>
+        <div class="header-right-side">
+          <a href="../../index.html" class="nav-button">Homepage</a>
+          <a href="" class="nav-button">Recipes</a>
+          <a href="../about/about.html" class="nav-button">About Us</a>
+          <a onclick="alert('Not enough time to implement this :(')" class="nav-button">Login</a>
+        </div>
+      </header>
+      <side-bar>
+    
+      </side-bar>
+      <h1 class="recipes-h1">You can find all recipes here!</h1>
+
+      <div id="page-content">
+
+      </div>
+      <footer>
+        <p>All rights reserved. 07.08.2023</p>
+      </footer>
+    
+</body>
+</html>
