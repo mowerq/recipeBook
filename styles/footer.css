@@ -10,5 +10,24 @@ footer {
     align-items: center;
     border-top: 1px solid #383e4243;
     z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 40px 5px 40px;
 }
 
+.social-media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-button {
+    background-color: white;
+    border: none;
+    padding: 0 10px;
+}
+
+#social-text {
+    margin-right: 10px;
+}
