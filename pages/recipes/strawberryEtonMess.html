@@ -43,7 +43,7 @@
         const keysHowToMake = Object.keys(thisRecipe["howToMake"]);
         for (let i = 0; i < keysHowToMake.length; i++) {
           const textTitle = document.createElement("h4");
-          textTitle.innerHTML = keysHowToMake[i];
+          textTitle.innerHTML = `${i + 1}. ` + keysHowToMake[i];
           thisRecipeContent.appendChild(textTitle);
           const textContent = document.createElement("p");
           textContent.innerHTML = "&emsp;&emsp;" + thisRecipe["howToMake"][keysHowToMake[i]];

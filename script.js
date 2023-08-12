@@ -18,6 +18,6 @@ function getRecipeDetails(htmlUrl) {
 
 function getRecipesByWord(word){
     return data["recipes"].filter(e => 
-        e["name"].toLowerCase().includes(word.toLowerCase())
+        e["name"].toLowerCase().includes(word.toLowerCase().trim())
     );
 }
