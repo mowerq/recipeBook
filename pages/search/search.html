@@ -7,15 +7,36 @@
     <link rel="stylesheet" href="../../styles/general.css">
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../styles/footer.css">
+    <link rel="stylesheet" href="search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="recipes.css">
+
     <script src="../../script.js"></script>
     <script src="../../data/data.js"></script>
-    <title>Recipes</title>
+    <title>Search Results</title>
     <script>
-      const allRecipes = readRecipes();
-      document.addEventListener('DOMContentLoaded', function() {
-        const pageContent = document.getElementById("page-content");
+
+      
+    document.addEventListener('DOMContentLoaded', function() {
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      }
+
+      var name = getParameterByName('search-textinput');
+
+      const allRecipes = getRecipesByWord(name);
+      const pageContent = document.getElementById("page-content");
+
+      if(allRecipes.length === 0){
+        const couldNotFound = document.createElement("h1");
+        couldNotFound.innerHTML = `There is no recipe that contains ${name} for now :(`;
+        pageContent.appendChild(couldNotFound);
+      }else{
         for (let i = 0; i < allRecipes.length; i++) {
           const recipeCard = document.createElement("div");
           recipeCard.className = "recipe-card";
@@ -24,7 +45,7 @@
           bgImage.className = "card-bg";
           const navigatorBgImage = document.createElement("a");
           navigatorBgImage.appendChild(bgImage);
-          navigatorBgImage.href = allRecipes[i]["htmlUrl"];
+          navigatorBgImage.href = "../recipes/" + allRecipes[i]["htmlUrl"];
           recipeCard.appendChild(navigatorBgImage);
           const recipeName = document.createElement("p");
           recipeName.innerHTML = allRecipes[i]["name"];
@@ -37,9 +58,10 @@
 
           pageContent.appendChild(recipeCard);
         }
-      });
-
-      document.getElementById('search-textinput')
+      }
+    });
+      
+    document.getElementById('search-textinput')
     .addEventListener('keyup', function(event) {
         if (event.code === 'Enter')
         {
@@ -50,32 +72,33 @@
     </script>
 </head>
 <body>
-    <header>
-        <div class="header-left-side">
-          <button onclick="alert('Not enough time to implement this :(')" class="burger-menu-button">
-            <img class="burger-menu-svg" src="../../icons/burger-menu.svg" alt="burger-menu">
-          </button>
-          <a href="../../index.html">
-            <img class="header-logo" src="../../img/logos/anthracite-bgremoved.png" alt="logo">
-          </a>
-        </div>
-        <form class="header-middle" action="../search/search.html">
-          <input required placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
-          <button class="search-icon-button">
-            <img class="magnifying-glass-icon" src="../../icons/magnifying-glass.svg" alt="magnifying glass">
-          </button>
-        </form>
-        <div class="header-right-side">
-          <a href="../../index.html" class="nav-button">Homepage</a>
-          <a href="" class="nav-button">Recipes</a>
-          <a href="../about/about.html" class="nav-button">About Us</a>
-          <a onclick="alert('Not enough time to implement this :(')" class="nav-button">Login</a>
-        </div>
-      </header>
+  <header>
+    <div class="header-left-side">
+      <button onclick="alert('Not enough time to implement this :(')" class="burger-menu-button">
+        <img class="burger-menu-svg" src="../../icons/burger-menu.svg" alt="burger-menu">
+      </button>
+      <a href="../../index.html">
+        <img class="header-logo" src="../../img/logos/anthracite-bgremoved.png" alt="logo">
+
+      </a>
+    </div>
+    <form class="header-middle" action="../search/search.html">
+      <input required placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
+      <button class="search-icon-button">
+        <img class="magnifying-glass-icon" src="../../icons/magnifying-glass.svg" alt="magnifying glass">
+      </button>
+    </form>
+    <div class="header-right-side">
+      <a href="../../index.html" class="nav-button">Homepage</a>
+      <a href="../recipes/recipes.html" class="nav-button">Recipes</a>
+      <a href="../about/about.html" class="nav-button">About Us</a>
+      <a onclick="alert('Not enough time to implement this :(')" class="nav-button">Login</a>
+    </div>
+  </header>
       <side-bar>
     
       </side-bar>
-      <h1 class="recipes-h1">You can find all recipes here!</h1>
+      <h1 class="recipes-h1">Search Results: </h1>
 
       <div id="page-content">
 

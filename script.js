@@ -15,3 +15,9 @@ function getRecipeDetails(htmlUrl) {
     return alert("Recipe Could not found!");
 
 }
+
+function getRecipesByWord(word){
+    return data["recipes"].filter(e => 
+        e["name"].toLowerCase().includes(word.toLowerCase())
+    );
+}

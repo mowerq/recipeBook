@@ -15,6 +15,7 @@ body, html {
 
 body {
     position: relative;
+    min-height: calc(100vh - 140px);
     padding: 100px 60px 40px 60px;
     height: calc(100% - 140px);
     display: flex;

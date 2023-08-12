@@ -15,6 +15,7 @@
   <script>
     const randomSuggestion = showRandomRecipe();
     document.addEventListener('DOMContentLoaded', function() {
+      
       document.getElementById("suggestion-name").innerHTML = randomSuggestion["name"];
       document.getElementById("suggestion-description").innerHTML = randomSuggestion["description"];
       document.getElementById("homepage-suggestion-img").src = randomSuggestion["picUrl"];
@@ -50,6 +51,14 @@
 
     
     });
+        document.getElementById('search-textinput')
+    .addEventListener('keyup', function(event) {
+        if (event.code === 'Enter')
+        {
+            event.preventDefault();
+            document.querySelector('form').submit();
+        }
+    });
   </script>
 </head>
 <body>
@@ -62,12 +71,13 @@
         <img class="header-logo" src="img/logos/anthracite-bgremoved.png" alt="logo">
       </a>
     </div>
-    <div class="header-middle">
-      <input placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
-      <button onclick="alert('Not enough time to implement this :(')" class="search-icon-button">
+    <form class="header-middle" action="pages/search/search.html">
+      <input required placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
+      <button class="search-icon-button">
         <img class="magnifying-glass-icon" src="icons/magnifying-glass.svg" alt="magnifying glass">
       </button>
-    </div>
+    </form>
+      
     <div class="header-right-side">
       <a href="" class="nav-button">Homepage</a>
       <a href="pages/recipes/recipes.html" class="nav-button">Recipes</a>

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../../styles/general.css">
     <link rel="stylesheet" href="../../styles/header.css">
     <link rel="stylesheet" href="../../styles/footer.css">
+    <img class="header-logo" src="../../img/logos/anthracite-bgremoved.png" alt="logo">
+
     <link rel="stylesheet" href="recipes.css">
     <link rel="stylesheet" href="individualRecipes.css">
     <script src="../../script.js"></script>
@@ -52,6 +54,15 @@
         bonApetit.innerHTML = "Bon Appetit &#128522;"
         thisRecipeContent.appendChild(bonApetit);
       });
+
+      document.getElementById('search-textinput')
+    .addEventListener('keyup', function(event) {
+        if (event.code === 'Enter')
+        {
+            event.preventDefault();
+            document.querySelector('form').submit();
+        }
+    });
     </script>
 </head>
 <body>
@@ -65,12 +76,12 @@
 
           </a>
         </div>
-        <div class="header-middle">
-          <input placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
-          <button onclick="alert('Not enough time to implement this :(')" class="search-icon-button">
+        <form class="header-middle" action="../search/search.html">
+          <input required placeholder="Search Recipes" type="text" name="search-textinput" class="search-textinput">
+          <button class="search-icon-button">
             <img class="magnifying-glass-icon" src="../../icons/magnifying-glass.svg" alt="magnifying glass">
           </button>
-        </div>
+        </form>
         <div class="header-right-side">
           <a href="../../index.html" class="nav-button">Homepage</a>
           <a href="recipes.html" class="nav-button">Recipes</a>
@@ -85,7 +96,15 @@
         <h1>Ingredients</h1>
       </div>
       <footer>
+        <p>- MG - Best Recipes in the World</p>
         <p>All rights reserved. 07.08.2023</p>
+        <div class="social-media">
+          <p id="social-text">Follow us on Social Media: </p>
+          <button class="social-button"><i class="fa fa-twitter" style="font-size:24px"></i></button>
+          <button class="social-button"><i class="fa fa-facebook" style="font-size:24px"></i></button>
+          <button class="social-button"><i class="fa fa-instagram" style="font-size:24px"></i></button>
+        </div>
+    
       </footer>
 </body>
 </html>
